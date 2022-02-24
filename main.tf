@@ -1,13 +1,13 @@
-resource "random_integer" "example" {
-  count = module.this.enabled ? 1 : 0
-
-  min = 1
-  max = 50000
-  keepers = {
-    example = var.example
-  }
+locals {
+  enabled = module.this.enabled
 }
 
-locals {
-  example = format("%v %v", var.example, join("", random_integer.example[*].result))
+resource "aws_glue_workflow" "this" {
+  count = local.enabled ? 1 : 0
+
+  name = var.name
+
+  default_run_properties = var.default_run_properties
+
+  max_concurrent_runs = var.max_concurrent_runs
 }
