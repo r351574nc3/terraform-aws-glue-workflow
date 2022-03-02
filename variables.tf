@@ -1,5 +1,5 @@
 variable "default_run_properties" {
-  description = "(Optional) A map of default run properties for this workflow. These properties are passed to all jobs associated to the workflow."
+  description = "A map of default run properties for this workflow. These properties are passed to all jobs associated to the workflow."
   type        = map(string)
   default     = {}
 }

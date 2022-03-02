@@ -10,4 +10,6 @@ resource "aws_glue_workflow" "this" {
   default_run_properties = var.default_run_properties
 
   max_concurrent_runs = var.max_concurrent_runs
+
+  tags = module.this.tags
 }
